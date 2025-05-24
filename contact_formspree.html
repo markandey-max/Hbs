@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Contact - FitHealth</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: url('https://themepack.me/i/c/749x467/media/g/679/dark-theme-np17.jpg') no-repeat center center;
+      background-size: cover;
+      background-attachment: fixed;
+      color: white;
+    }
+    @media (max-width: 768px) {
+      body {
+        background-attachment: scroll;
+      }
+    }
+    .contact-section {
+      padding: 80px 20px;
+      background-color: rgba(0, 0, 0, 0.6);
+      text-align: center;
+    }
+    .contact-section h2 {
+      font-size: 2.5em;
+      color: #00e676;
+      margin-bottom: 30px;
+    }
+    .contact-form {
+      max-width: 600px;
+      margin: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+    .contact-form input,
+    .contact-form textarea {
+      padding: 15px;
+      border: none;
+      border-radius: 10px;
+      background: rgba(255, 255, 255, 0.1);
+      color: white;
+      font-size: 1em;
+      backdrop-filter: blur(6px);
+    }
+    .contact-form input::placeholder,
+    .contact-form textarea::placeholder {
+      color: #ccc;
+    }
+    .contact-form button {
+      padding: 15px;
+      font-size: 1.1em;
+      background-color: #00e676;
+      color: #000;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+    .contact-form button:hover {
+      background-color: #00c853;
+    }
+  </style>
+</head>
+<body>
+  <section id="contact" class="contact-section">
+    <h2>Contact Us</h2>
+    <form class="contact-form" action="https://formspree.io/f/mjkwdgjv" method="POST">
+      <input type="text" name="name" placeholder="Your Name" required />
+      <input type="email" name="email" placeholder="Your Email" required />
+      <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
+      <button type="submit">Send Message</button>
+    </form>
+  </section>
+</body>
+</html>
