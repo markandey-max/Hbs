@@ -1,0 +1,143 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>My Profile - FitHealth</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: url('https://themepack.me/i/c/749x467/media/g/679/dark-theme-np17.jpg') no-repeat center center fixed;
+      background-size: cover;
+      color: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .container {
+      background-color: rgba(0,0,0,0.7);
+      padding: 30px;
+      border-radius: 15px;
+      width: 100%;
+      max-width: 400px;
+      box-shadow: 0 0 15px rgba(0,255,100,0.3);
+    }
+
+    h2 {
+      text-align: center;
+      color: #00e676;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="password"] {
+      width: 100%;
+      padding: 12px;
+      margin: 8px 0;
+      background: rgba(255,255,255,0.1);
+      border: none;
+      border-radius: 8px;
+      color: #fff;
+    }
+
+    button {
+      width: 100%;
+      padding: 12px;
+      margin-top: 12px;
+      background-color: #00e676;
+      border: none;
+      border-radius: 8px;
+      color: black;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #00c853;
+    }
+
+    .link {
+      display: block;
+      margin-top: 10px;
+      text-align: right;
+      font-size: 0.9em;
+      color: #ccc;
+      text-decoration: none;
+    }
+
+    .link:hover {
+      text-decoration: underline;
+      color: #00e676;
+    }
+
+    .profile-info {
+      text-align: center;
+    }
+
+    .logout {
+      margin-top: 20px;
+      background-color: crimson;
+    }
+  </style>
+</head>
+<body>
+  <div class="container" id="form-container">
+    <h2>Log In</h2>
+    <input type="text" id="username" placeholder="Username" required>
+    <input type="email" id="email" placeholder="Email" required>
+    <input type="password" id="password" placeholder="Password" required>
+    <a href="forgot_password.html" class="link">Forgot Password?</a>
+    <button onclick="login()">Log In</button>
+  </div>
+
+  <div class="container" id="profile-container" style="display: none;">
+    <h2>My Profile</h2>
+    <div class="profile-info">
+      <p><strong>Username:</strong> <span id="display-username"></span></p>
+      <p><strong>Email:</strong> <span id="display-email"></span></p>
+    </div>
+    <button class="logout" onclick="logout()">Log Out</button>
+  </div>
+
+  <script>
+    window.onload = () => {
+      const user = JSON.parse(localStorage.getItem("userData"));
+      if (user) {
+        showProfile(user);
+      }
+    };
+
+    function login() {
+      const username = document.getElementById("username").value.trim();
+      const email = document.getElementById("email").value.trim();
+      const password = document.getElementById("password").value.trim();
+
+      if (!username || !email || !password) {
+        alert("Please fill out all fields.");
+        return;
+      }
+
+      const userData = { username, email };
+      localStorage.setItem("userData", JSON.stringify(userData));
+      showProfile(userData);
+    }
+
+    function showProfile(user) {
+      document.getElementById("form-container").style.display = "none";
+      document.getElementById("profile-container").style.display = "block";
+      document.getElementById("display-username").textContent = user.username;
+      document.getElementById("display-email").textContent = user.email;
+    }
+
+    function logout() {
+      localStorage.removeItem("userData");
+      document.getElementById("form-container").style.display = "block";
+      document.getElementById("profile-container").style.display = "none";
+    }
+  </script>
+</body>
+</html>
